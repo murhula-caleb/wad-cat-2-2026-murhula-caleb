@@ -39,18 +39,25 @@ swimmingClasses.forEach(function(swimClass){
 
     classesContainer.appendChild(card);
 });
-// Wishlist add/remove
+
+// Wishlist add/remove/persist with localStorage
 let wishlistInput = document.querySelector("#wishlist-input");
 let wishlistAddBtn = document.querySelector("#wishlist-add-btn");
 let wishlistList = document.querySelector("#wishlist-list");
 
-function addWishlistItem() {
-
-    let value = wishlistInput.value.trim();
-
-    if (value === "") {
-        return;
+function getWishlistFromStorage() {
+    let stored = localStorage.getItem("wishlistItems");
+    if (stored === null) {
+        return [];
     }
+    return JSON.parse(stored);
+}
+
+function saveWishlistToStorage(items) {
+    localStorage.setItem("wishlistItems", JSON.stringify(items));
+}
+
+function createWishlistItemElement(value) {
 
     let li = document.createElement("li");
     li.classList.add("wishlist-item");
@@ -64,16 +71,48 @@ function addWishlistItem() {
 
     removeBtn.addEventListener("click", function() {
         li.remove();
+
+        let items = getWishlistFromStorage();
+        items = items.filter(function(item) {
+            return item !== value;
+        });
+        saveWishlistToStorage(items);
     });
 
     li.appendChild(span);
     li.appendChild(removeBtn);
+
+    return li;
+}
+
+function addWishlistItem() {
+
+    let value = wishlistInput.value.trim();
+
+    if (value === "") {
+        return;
+    }
+
+    let li = createWishlistItemElement(value);
     wishlistList.appendChild(li);
+
+    let items = getWishlistFromStorage();
+    items.push(value);
+    saveWishlistToStorage(items);
 
     wishlistInput.value = "";
 }
 
+function loadWishlistFromStorage() {
+    let items = getWishlistFromStorage();
+    items.forEach(function(value) {
+        let li = createWishlistItemElement(value);
+        wishlistList.appendChild(li);
+    });
+}
+
 wishlistAddBtn.addEventListener("click", addWishlistItem);
+loadWishlistFromStorage();
 // Contact form validation
 let contactForm = document.querySelector("#contact-form");
 
