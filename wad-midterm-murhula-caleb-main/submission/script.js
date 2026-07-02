@@ -22,23 +22,24 @@ const swimmingClasses = [
     }
 ];
 
-// DOM
-let classesContainer = document.querySelector("#classes-container");
+// DOM - FIXED: Changed selector from #classes-container to #classes-grid to match your HTML
+let classesContainer = document.querySelector("#classes-grid");
 
 // Loop through the array
-swimmingClasses.forEach(function(swimClass){
+if (classesContainer) {
+    swimmingClasses.forEach(function(swimClass){
+        let card = document.createElement("div");
+        card.classList.add("class-card");
 
-    let card = document.createElement("div");
-    card.classList.add("class-card");
+        card.innerHTML = `
+            <h3>${swimClass.name}</h3>
+            <p>${swimClass.age}</p>
+            <p>${swimClass.price}</p>
+        `;
 
-    card.innerHTML = `
-        <h3>${swimClass.name}</h3>
-        <p>${swimClass.age}</p>
-        <p>${swimClass.price}</p>
-    `;
-
-    classesContainer.appendChild(card);
-});
+        classesContainer.appendChild(card);
+    });
+}
 
 // Wishlist add/remove/persist with localStorage
 let wishlistInput = document.querySelector("#wishlist-input");
@@ -58,7 +59,6 @@ function saveWishlistToStorage(items) {
 }
 
 function createWishlistItemElement(value) {
-
     let li = document.createElement("li");
     li.classList.add("wishlist-item");
 
@@ -86,7 +86,6 @@ function createWishlistItemElement(value) {
 }
 
 function addWishlistItem() {
-
     let value = wishlistInput.value.trim();
 
     if (value === "") {
@@ -104,20 +103,24 @@ function addWishlistItem() {
 }
 
 function loadWishlistFromStorage() {
-    let items = getWishlistFromStorage();
-    items.forEach(function(value) {
-        let li = createWishlistItemElement(value);
-        wishlistList.appendChild(li);
-    });
+    if (wishlistList) {
+        let items = getWishlistFromStorage();
+        items.forEach(function(value) {
+            let li = createWishlistItemElement(value);
+            wishlistList.appendChild(li);
+        });
+    }
 }
 
-wishlistAddBtn.addEventListener("click", addWishlistItem);
+if (wishlistAddBtn) {
+    wishlistAddBtn.addEventListener("click", addWishlistItem);
+}
 loadWishlistFromStorage();
+
 // Contact form validation
 let contactForm = document.querySelector("#contact-form");
 
 function handleContactSubmit(event) {
-
     event.preventDefault();
 
     let name = document.querySelector("#name").value.trim();
@@ -149,12 +152,16 @@ function handleContactSubmit(event) {
     contactForm.reset();
 }
 
-contactForm.addEventListener("submit", handleContactSubmit);
+if (contactForm) {
+    contactForm.addEventListener("submit", handleContactSubmit);
+}
 
 // Click-to-reveal banner caption
 let bannerHeader = document.querySelector("#home");
 let bannerCaption = document.querySelector("#banner-caption");
 
-bannerHeader.addEventListener("click", function() {
-    bannerCaption.classList.toggle("visible");
-});
+if (bannerHeader && bannerCaption) {
+    bannerHeader.addEventListener("click", function() {
+        bannerCaption.classList.toggle("visible");
+    });
+}
