@@ -1,0 +1,198 @@
+/* --- CONFIGURATION GLOBALE --- */
+:root {
+  --primary: #005b96;
+  --accent: #00a8cc;
+  --dark: #222222;
+  --light: #f4f4f4;
+  --border: #ddd;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--dark);
+  line-height: 1.5;
+}
+
+/* --- STRUCTURE DES SECTIONS --- */
+section {
+  padding: 50px 5%;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section-label {
+  color: var(--accent);
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.5rem;
+}
+
+/* --- BOUTONS COMPACTS --- */
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.btn-primary { background-color: var(--accent); color: #fff; border: none; }
+.btn-secondary { border: 2px solid #fff; color: #fff; }
+.full-width { width: 100%; }
+
+/* --- HEADER & HERO --- */
+header {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 5%;
+  color: #fff;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; }
+.nav-links { display: flex; gap: 20px; }
+.hero-content { margin: auto 0; max-width: 600px; }
+header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; line-height: 1; margin: 10px 0; }
+.hero-stats { display: flex; gap: 40px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 15px; }
+.stat-number { font-size: 1.8rem; font-weight: bold; color: var(--accent); }
+
+/* --- ABOUT --- */
+#about { background-color: var(--light); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+
+/* Correction taille de l'image About */
+.about-image-wrap { max-width: 400px; width: 100%; margin: 0 auto; }
+.about-img { width: 100%; height: 300px; object-fit: cover; border-radius: 6px; }
+
+/* --- CARTES DES COURS (Fini le gigantisme !) --- */
+.classes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Aligne les 4 cartes côte à côte */
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.class-card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Force les illustrations/images des cartes à rester petites et uniformes */
+.class-image-container {
+  height: 140px; 
+  width: 100%;
+  background: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.class-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Évite que l'icône soit déformée ou géante */
+  max-height: 100px;
+}
+
+.class-card h3, .class-card p, .class-card .class-price {
+  padding: 8px 15px;
+}
+
+.class-card h3 { font-size: 1.3rem; }
+.class-age { font-size: 0.8rem; color: var(--accent); font-weight: bold; }
+.class-card p:not(.class-age):not(.class-price) { font-size: 0.9rem; color: #666; flex-grow: 1; }
+.class-price { font-size: 1.4rem; font-weight: bold; color: var(--primary); }
+
+.class-card.featured { background-color: var(--primary); color: #fff; }
+.class-card.featured .class-price { color: var(--accent); }
+.class-card.featured p { color: #eee; }
+
+/* --- ACHIEVEMENTS --- */
+#achievements { background-color: var(--primary); color: #fff; }
+.achievements-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.achievement-card { background: rgba(255,255,255,0.1); padding: 15px; border-radius: 4px; }
+.ach-year { font-size: 1.6rem; font-weight: bold; color: var(--accent); }
+
+/* --- PLANNING --- */
+#schedule { background-color: var(--light); }
+.schedule-table-wrap { background: #fff; padding: 15px; border-radius: 6px; overflow-x: auto; border: 1px solid var(--border); }
+.schedule-table { width: 100%; border-collapse: collapse; }
+.schedule-table th, .schedule-table td { padding: 10px; border-bottom: 1px solid var(--border); text-align: left; font-size: 0.95rem; }
+
+/* --- CONTACT (Correction des icônes géantes de l'image 6) --- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.contact-details { display: flex; flex-direction: column; gap: 15px; }
+.contact-item { display: flex; align-items: center; gap: 15px; }
+
+/* Force les blocs d'icônes SVG à rester petits */
+.contact-icon {
+  width: 35px;
+  height: 35px;
+  background-color: #e0f7fa;
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Force les SVG à l'intérieur à faire 18px maximum */
+.contact-icon svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block;
+}
+
+.contact-item span:not(.contact-icon) {
+  font-size: 0.95rem;
+}
+
+.contact-form-wrap { background: var(--light); padding: 25px; border-radius: 6px; border: 1px solid var(--border); }
+.contact-form { display: flex; flex-direction: column; gap: 15px; }
+.form-group { display: flex; flex-direction: column; gap: 5px; }
+.form-group label { font-weight: bold; font-size: 0.9rem; }
+.form-group input, .form-group select, .form-group textarea { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.95rem; }
+
+/* --- FOOTER --- */
+footer { background: #111; color: #aaa; padding: 30px 5%; text-align: center; font-size: 0.9rem; }
+.footer-nav { margin: 15px 0; display: flex; justify-content: center; gap: 15px; }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 1024px) {
+  .classes-grid, .achievements-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+@media (max-width: 480px) {
+  .classes-grid, .achievements-grid { grid-template-columns: 1fr; }
+}
