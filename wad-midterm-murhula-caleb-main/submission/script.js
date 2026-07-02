@@ -150,3 +150,11 @@ function handleContactSubmit(event) {
 }
 
 contactForm.addEventListener("submit", handleContactSubmit);
+
+// Click-to-reveal banner caption
+let bannerHeader = document.querySelector("#home");
+let bannerCaption = document.querySelector("#banner-caption");
+
+bannerHeader.addEventListener("click", function() {
+    bannerCaption.classList.toggle("visible");
+});
