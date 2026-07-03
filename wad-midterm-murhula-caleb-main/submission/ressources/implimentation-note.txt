@@ -10,5 +10,5 @@ The swimming classes are stored in a list of objects and displayed on the page a
     so the page does not reload when the form is submitted. Wishlist items are also saved using localStorage,
      which means they are stored in the browser and are still there even after the page is refreshed or closed and reopened. 
      Clicking on the banner image at the top of the page shows or hides a short caption using classList.toggle(), 
-     the same pattern used in class for toggling classes on an element. All of the code shown here is written in plain,
+     the same pattern used in class for toggling classes on an element. All of the code shown here is written in plain
       vanilla JavaScript with no frameworks or external libraries used, and the full script can be found in submission/js/script.js
