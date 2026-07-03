@@ -37,3 +37,38 @@ if (classesContainer) {
         classesContainer.appendChild(card);
     });
 }
+let wishlistInput = document.querySelector("#wishlist-input");
+let wishlistAddBtn = document.querySelector("#wishlist-add-btn");
+let wishlistList = document.querySelector("#wishlist-list");
+
+function addWishlistItem() {
+    let value = wishlistInput.value.trim();
+
+    if (value === "") {
+        return;
+    }
+
+    let li = document.createElement("li");
+    li.classList.add("wishlist-item");
+
+    let span = document.createElement("span");
+    span.textContent = value;
+
+    let removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+    removeBtn.classList.add("wishlist-remove-btn");
+
+    removeBtn.addEventListener("click", function() {
+        li.remove();
+    });
+
+    li.appendChild(span);
+    li.appendChild(removeBtn);
+    wishlistList.appendChild(li);
+
+    wishlistInput.value = "";
+}
+
+if (wishlistAddBtn) {
+    wishlistAddBtn.addEventListener("click", addWishlistItem);
+}
