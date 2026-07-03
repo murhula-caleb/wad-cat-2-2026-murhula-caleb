@@ -68,7 +68,6 @@ function addWishlistItem() {
 
     wishlistInput.value = "";
 }
-
 if (wishlistAddBtn) {
     wishlistAddBtn.addEventListener("click", addWishlistItem);
 }
