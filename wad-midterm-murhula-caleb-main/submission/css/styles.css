@@ -325,3 +325,15 @@ header {
 .wishlist-remove-btn:hover {
   background: #c1121f;
 }
+.form-feedback {
+  margin-top: 14px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-height: 20px;
+}
+.form-feedback.error {
+  color: #e63946;
+}
+.form-feedback.success {
+  color: #2a9d8f;
+}
