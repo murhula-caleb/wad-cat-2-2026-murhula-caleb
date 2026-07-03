@@ -1,0 +1,14 @@
+
+CAT 2 - Implementation Notes - Coach Amara Osei Swimming Coach Website
+
+The swimming classes are stored in a list of objects and displayed on the page automatically using a loop (forEach),
+ along with createElement() and appendChild() to build and insert each class card into the DOM. 
+ Users can add new items to a wishlist by typing into an input field and clicking a button,
+  and each item that gets added comes with its own "Remove" button so it can be deleted individually from the page.
+   The contact form checks that all the required fields have been filled in correctly, including a valid phone number,
+    before showing a clear success or error message directly on the page; this is done using event.preventDefault() 
+    so the page does not reload when the form is submitted. Wishlist items are also saved using localStorage,
+     which means they are stored in the browser and are still there even after the page is refreshed or closed and reopened. 
+     Clicking on the banner image at the top of the page shows or hides a short caption using classList.toggle(), 
+     the same pattern used in class for toggling classes on an element. All of the code shown here is written in plain,
+      vanilla JavaScript with no frameworks or external libraries used, and the full script can be found in submission/js/script.js
