@@ -148,3 +148,11 @@ function handleContactSubmit(event) {
 if (contactForm) {
     contactForm.addEventListener("submit", handleContactSubmit);
 }
+let bannerHeader = document.querySelector("#home");
+let bannerCaption = document.querySelector("#banner-caption");
+
+if (bannerHeader && bannerCaption) {
+    bannerHeader.addEventListener("click", function() {
+        bannerCaption.classList.toggle("visible");
+    });
+}
